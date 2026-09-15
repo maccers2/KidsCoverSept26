@@ -1,0 +1,75 @@
+name: Improve mobile layout
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch-mobile-layout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Patch mobile rendering
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+
+          if 'name="viewport"' not in s:
+              s = s.replace(
+                  '<meta charset="UTF-8">',
+                  '<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n<meta name="theme-color" content="#1B2340">\n<meta name="apple-mobile-web-app-capable" content="yes">\n<meta name="apple-mobile-web-app-status-bar-style" content="default">\n<meta name="apple-mobile-web-app-title" content="KidsCoverSept26">'
+              )
+
+          old = '''  @media(max-width:700px){
+            table.timetable{font-size:12px;}
+            table.timetable th, table.timetable td{padding:6px;}
+            table.timetable{display:block;overflow-x:auto;}
+          }'''
+          new = '''  @media(max-width:700px){
+            body{padding:18px 10px 40px;font-size:16px;}
+            .wrap{max-width:none;}
+            header{margin-bottom:20px;}
+            h1{font-size:30px;line-height:1.15;margin-bottom:6px;}
+            .subtitle{font-size:16px;line-height:1.4;}
+            .assumption-note{font-size:15px;line-height:1.55;padding:15px 16px;border-radius:12px;}
+            .day{padding:17px 14px;border-radius:14px;margin-bottom:16px;}
+            .day-head{align-items:flex-start;gap:8px;}
+            .day-name{font-size:22px;line-height:1.25;}
+            .day-tag{font-size:12px;text-align:right;padding-top:3px;}
+            .day-risk,.cover-note{font-size:15px;line-height:1.5;padding:11px 13px;}
+            .subsection{padding:14px 13px;border-radius:10px;}
+            .subsection h3{font-size:13px;margin-bottom:9px;}
+            .subsection li{font-size:16px;line-height:1.45;padding:6px 0;gap:11px;}
+            .subsection input[type=checkbox]{width:21px;height:21px;margin-top:1px;flex-basis:21px;}
+            .flag{font-size:12px;padding:3px 8px;}
+            table.timetable{display:block;overflow-x:auto;font-size:14px;-webkit-overflow-scrolling:touch;}
+            table.timetable th{font-size:12px;padding:9px 10px;white-space:nowrap;}
+            table.timetable td{padding:10px;min-width:110px;}
+            table.timetable th:nth-child(5), table.timetable td:nth-child(5),
+            table.timetable th:nth-child(6), table.timetable td:nth-child(6){min-width:180px;}
+          }'''
+          if old in s:
+              s = s.replace(old, new)
+          elif 'font-size:30px' not in s:
+              raise SystemExit('Expected mobile CSS block not found')
+
+          p.write_text(s, encoding='utf-8')
+      - name: Commit patch if needed
+        run: |
+          if git diff --quiet; then
+            echo "No changes needed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Improve mobile app layout"
+          git push
