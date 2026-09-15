@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kids Cover Schedule — 16–23 September 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B2340;
+    --paper:#FAF7F1;
+    --card:#FFFFFF;
+    --line:#E7E1D4;
+    --ink:#26241F;
+    --muted:#736F63;
+    --dogs:#6E7F4F;
+    --dogs-bg:#EEF2E4;
+    --morning-bg:#EAF1F8;
+    --morning:#3A6EA5;
+    --evening-bg:#F1ECF9;
+    --evening:#7A5FB0;
+    --alert:#C9601F;
+    --alert-bg:#FBEDE1;
+    --david:#3A6EA5;
+    --natalia:#B8577E;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    padding:32px 24px 60px;
+  }
+  .wrap{max-width:940px;margin:0 auto;}
+  header{margin-bottom:26px;}
+  h1{
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    font-size:26px;
+    color:var(--navy);
+    margin:0 0 4px;
+  }
+  .subtitle{color:var(--muted);font-size:14px;margin:0;}
+
+  .day{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:20px 22px;
+    margin-bottom:18px;
+  }
+  .day-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin-bottom:14px;
+    padding-bottom:10px;
+    border-bottom:2px solid var(--line);
+  }
+  .day-name{
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    font-size:20px;
+    color:var(--navy);
+  }
+  .day-tag{
+    font-size:11px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.04em;
+  }
+  .day-risk{
+    background:var(--alert-bg);
+    border-left:4px solid var(--alert);
+    border-radius:0 8px 8px 0;
+    padding:8px 14px;
+    font-size:13px;
+    color:var(--alert);
+    margin-bottom:14px;
+    line-height:1.5;
+  }
+
+  .subsection{
+    border-radius:8px;
+    padding:12px 16px;
+    margin-bottom:12px;
+  }
+  .subsection:last-child{margin-bottom:0;}
+  .subsection h3{
+    margin:0 0 8px;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    font-weight:600;
+  }
+  .morning{background:var(--morning-bg);}
+  .morning h3{color:var(--morning);}
+  .evening{background:var(--evening-bg);}
+  .evening h3{color:var(--evening);}
+  .dogs{background:var(--dogs-bg);}
+  .dogs h3{color:var(--dogs);}
+
+  .subsection ul{list-style:none;margin:0;padding:0;}
+  .subsection li{
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    font-size:14px;
+    line-height:1.5;
+    padding:3px 0;
+  }
+  .subsection input[type=checkbox]{
+    margin-top:3px;
+    width:15px;height:15px;
+    flex-shrink:0;
+    accent-color:var(--navy);
+  }
+  .subsection li.checked-text label{
+    text-decoration:line-through;
+    color:var(--muted);
+  }
+  .flag{
+    display:inline-block;
+    background:var(--alert-bg);
+    color:var(--alert);
+    font-size:11px;
+    font-weight:600;
+    padding:2px 8px;
+    border-radius:20px;
+    margin-left:6px;
+    vertical-align:middle;
+  }
+
+  table.timetable{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+  }
+  table.timetable th{
+    background:var(--navy);
+    color:#fff;
+    text-align:left;
+    padding:8px 10px;
+    font-weight:500;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+  }
+  table.timetable td{
+    padding:8px 10px;
+    border-top:1px solid var(--line);
+    vertical-align:top;
+    line-height:1.5;
+  }
+  table.timetable tr:nth-child(even) td{background:#FCFAF6;}
+  .who-david{color:var(--david);font-weight:500;}
+  .who-natalia{color:var(--natalia);font-weight:500;}
+
+  @media(max-width:700px){
+    table.timetable{font-size:12px;}
+    table.timetable th, table.timetable td{padding:6px;}
+    table.timetable{display:block;overflow-x:auto;}
+  }
+  @media print{
+    body{background:#fff;padding:10px;}
+    .day{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Kids cover — week of 16 September</h1>
+    <p class="subtitle">Wednesday 16 – Wednesday 23 September 2026</p>
+  </header>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-name">Wed 16 Sept</span>
+      <span class="day-tag">School day</span>
+    </div>
+
+    <div class="subsection morning">
+      <h3>Morning checklist</h3>
+      <ul>
+        <li><input type="checkbox" id="c1"><label for="c1">Sam — packed lunch</label></li>
+        <li><input type="checkbox" id="c2"><label for="c2">Jamie — check if French Horn needed for House Orchestra <span class="flag">TBC</span></label></li>
+        <li><input type="checkbox" id="c1b"><label for="c1b">Remind Izzy and Jamie about how they are expected to get home</label></li>
+      </ul>
+    </div>
+
+    <div class="subsection dogs">
+      <h3>Dog reminders</h3>
+      <ul>
+        <li><input type="checkbox" id="d1"><label for="d1">Feed am and pm, water bowl topped up</label></li>
+        <li><input type="checkbox" id="d2"><label for="d2">Dog walker booked for mid-morning</label></li>
+      </ul>
+    </div>
+
+    <table class="timetable">
+      <thead><tr><th>Child</th><th>Activity</th><th>Time</th><th>Getting home</th><th>David</th><th>Natalia</th></tr></thead>
+      <tbody>
+        <tr><td>Izzy</td><td>Lacrosse</td><td>After school–5pm</td><td>Walks home after lacrosse unless House Orchestra is on (Dad will collect if so)</td><td class="who-david">Home for 5pm to collect from lacrosse and House Orchestra</td><td class="who-natalia">At home — let dogs out periodically</td></tr>
+        <tr><td>Jamie</td><td>House Orchestra <span class="flag">TBC</span></td><td>—</td><td>Walks home unless orchestra is on</td><td class="who-david">—</td><td class="who-natalia">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-name">Thu 17 Sept</span>
+      <span class="day-tag">Busiest evening</span>
+    </div>
+    <div class="day-risk">No dog cover today — whoever gets home first lets them out immediately and checks for accidents. Also a tight three-way pickup: Sam, Jamie and Izzy all land within 30 minutes.</div>
+
+    <div class="subsection morning">
+      <h3>Morning checklist</h3>
+      <ul>
+        <li><input type="checkbox" id="c3"><label for="c3">Sam — water bottle + snack only, no packed lunch</label></li>
+        <li><input type="checkbox" id="c4"><label for="c4">Sam — wearing PE kit</label></li>
+        <li><input type="checkbox" id="c5"><label for="c5">Sam — pack swimming kit</label></li>
+        <li><input type="checkbox" id="c6"><label for="c6">Jamie — pack French Horn (lesson today)</label></li>
+        <li><input type="checkbox" id="c6b"><label for="c6b">Remind Izzy and Jamie about how they are expected to get home</label></li>
+      </ul>
+    </div>
+
+    <div class="subsection dogs">
+      <h3>Dog reminders</h3>
+      <ul>
+        <li><input type="checkbox" id="d4"><label for="d4">Feed am and pm, water bowl topped up</label></li>
+        <li><input type="checkbox" id="d5"><label for="d5"><strong>No cover today</strong> — first one home lets them out ASAP, check for accidents</label></li>
+      </ul>
+    </div>
+
+    <table class="timetable">
+      <thead><tr><th>Child</th><th>Activity</th><th>Time</th><th>Getting home</th><th>David</th><th>Natalia</th></tr></thead>
+      <tbody>
+        <tr><td>Sam</td><td>Piano</td><td>5.10–5.40pm</td><td>Collected by David, 4.55pm</td><td class="who-david">Collect Sam by 4.55pm, drop at piano for 5.10pm</td><td class="who-natalia">In London today</td></tr>
+        <tr><td>Jamie</td><td>Rugby</td><td>After school–5pm</td><td>Collected by David, 5pm</td><td class="who-david">Pick up 5pm</td><td class="who-natalia">—</td></tr>
+        <tr><td>Izzy</td><td>Choir</td><td>5.15–6.15pm</td><td>Walks home after school</td><td class="who-david">Collect Izzy at 4.45pm sharp, collect Sam by 4.55pm, drop Sam at piano for 5.10pm, then drop Izzy at choir 5.15pm, collect at 6.15pm</td><td class="who-natalia">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-name">Fri 18 Sept</span>
+      <span class="day-tag">School starts 8.50am</span>
+    </div>
+
+    <div class="subsection morning">
+      <h3>Morning checklist</h3>
+      <ul>
+        <li><input type="checkbox" id="c7"><label for="c7">Izzy &amp; Jamie start at 8.50am sharp</label></li>
+        <li><input type="checkbox" id="c7b"><label for="c7b">Izzy and Jamie need to walk home from school</label></li>
+        <li><input type="checkbox" id="c8"><label for="c8">Sam — water bottle + snack only, no packed lunch</label></li>
+        <li><input type="checkbox" id="c8c"><label for="c8c">Remind Izzy and Jamie about how they are expected to get home</label></li>
+      </ul>
+    </div>
+
+    <div class="subsection evening">
+      <h3>Evening reminders</h3>
+      <ul>
+        <li><input type="checkbox" id="e1"><label for="e1">Izzy — retainer scan on her phone</label></li>
+      </ul>
+    </div>
+
+    <div class="subsection dogs">
+      <h3>Dog reminders</h3>
+      <ul>
+        <li><input type="checkbox" id="d6"><label for="d6">Feed am and pm, water bowl topped up</label></li>
+      </ul>
+    </div>
+
+    <table class="timetable">
+      <thead><tr><th>Child</th><th>Activity</th><th>Time</th><th>Getting home</th><th>David</th><th>Natalia</th></tr></thead>
+      <tbody>
+        <tr><td>Izzy</td><td>Choir</td><td>6.45–8pm</td><td>Walks home after school, then taken to choir</td><td class="who-david">Drop Izzy at choir by 6.45pm and collect at 8pm</td><td class="who-natalia">At home — let dogs out periodically</td></tr>
+        <tr><td>Sam</td><td>—</td><td>—</td><td>Collected by 6pm latest</td><td class="who-david">Home before 6pm for Sam's pick-up</td><td class="who-natalia">—</td></tr>
+        <tr><td>Jamie</td><td>—</td><td>—</td><td>Walks home after school</td><td class="who-david">—</td><td class="who-natalia">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-name">Sat 19 Sept</span>
+      <span class="day-tag">Sailing</span>
+    </div>
+
+    <div class="subsection morning">
+      <h3>Today's checklist</h3>
+      <ul>
+        <li><input type="checkbox" id="c9"><label for="c9">Sailing all day — kit ready</label></li>
+        <li><input type="checkbox" id="c10"><label for="c10">Do kids' uniform washing ready for Monday</label></li>
+      </ul>
+    </div>
+
+    <div class="subsection dogs">
+      <h3>Dog reminders</h3>
+      <ul>
+        <li><input type="checkbox" id="d7"><label for="d7">Feed am and pm, water bowl topped up</label></li>
+        <li><input type="checkbox" id="d8"><label for="d8">Natalia to let them out periodically</label></li>
+      </ul>
+    </div>
+
+    <table class="timetable">
+      <thead><tr><th>Activity</th><th>Time</th><th>Getting home</th><th>David</th><th>Natalia</th></tr></thead>
+      <tbody>
+        <tr><td>Sailing</td><td>All day</td><td>—</td><td class="who-david">Sailing support</td><td class="who-natalia">Let dogs out periodically</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-name">Sun 20 Sept</span>
+      <span class="day-tag">Choir day</span>
+    </div>
+
+    <div class="subsection morning">
+      <h3>Today's checklist</h3>
+      <ul>
+        <li><input type="checkbox" id="c11"><label for="c11">Izzy — Choir drop off 8.50am</label></li>
+        <li><input type="checkbox" id="c11b"><label for="c11b">Izzy — pick up by 10.45am</label></li>
+        <li><input type="checkbox" id="c11c"><label for="c11c">Izzy — Evensong drop off 5.45pm</label></li>
+        <li><input type="checkbox" id="c11d"><label for="c11d">Izzy — pick up 7pm</label></li>
+      </ul>
+    </div>
+
+    <div class="subsection dogs">
+      <h3>Dog reminders</h3>
+      <ul>
+        <li><input type="checkbox" id="d9"><label for="d9">Feed am and pm, water bowl topped up</label></li>
+        <li><input type="checkbox" id="d9c"><label for="d9c">Change and freshen their water</label></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-name">Mon 21 Sept</span>
+      <span class="day-tag">David singing, back late</span>
+    </div>
+    <div class="day-risk">Sam misses his 6.30pm swim session — Natalia collects him before 6pm instead.</div>
+
+    <div class="subsection morning">
+      <h3>Morning checklist</h3>
+      <ul>
+        <li><input type="checkbox" id="c12"><label for="c12">Sam — packed lunch and water bottle</label></li>
+        <li><input type="checkbox" id="c13"><label for="c13">Sam — wearing PE kit</label></li>
+        <li><input type="checkbox" id="c14"><label for="c14">Jamie — check if French Horn needed for House Orchestra <span class="flag">TBC</span></label></li>
+        <li><input type="checkbox" id="c14b"><label for="c14b">Remind Izzy and Jamie about how they are expected to get home</label></li>
+        <li><input type="checkbox" id="c14c"><label for="c14c">David to message Jousters to give Natalia permission to collect Sam</label></li>
+      </ul>
+    </div>
+
+    <div class="subsection dogs">
+      <h3>Dog reminders</h3>
+      <ul>
+        <li><input type="checkbox" id="d10"><label for="d10">Feed am and pm, water bowl topped up</label></li>
+        <li><input type="checkbox" id="d11"><label for="d11">Dog walker booked for mid-morning</label></li>
+      </ul>
+    </div>
+
+    <table class="timetable">
+      <thead><tr><th>Child</th><th>Activity</th><th>Time</th><th>Getting home</th><th>David</th><th>Natalia</th></tr></thead>
+      <tbody>
+        <tr><td>Izzy &amp; Jamie</td><td>—</td><td>—</td><td>Walk home from school</td><td class="who-david">Drop off, then singing this evening — back late</td><td class="who-natalia">At home. Let dogs out periodically.</td></tr>
+        <tr><td>Sam</td><td>Swimming <span class="flag">cancelled</span></td><td>6.30–7pm</td><td>Natalia is picking him up before 6pm</td><td class="who-david">—</td><td class="who-natalia">Picking Sam up before 6pm (he'll miss 6.30pm swimming)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-name">Tue 22 Sept</span>
+      <span class="day-tag">School day</span>
+    </div>
+
+    <div class="subsection morning">
+      <h3>Morning checklist</h3>
+      <ul>
+        <li><input type="checkbox" id="c15"><label for="c15">Sam — packed lunch and water bottle</label></li>
+        <li><input type="checkbox" id="c15b"><label for="c15b">Remind Izzy and Jamie about how they are expected to get home</label></li>
+      </ul>
+    </div>
+
+    <div class="subsection dogs">
+      <h3>Dog reminders</h3>
+      <ul>
+        <li><input type="checkbox" id="d13"><label for="d13">Feed am and pm, water bowl topped up</label></li>
+      </ul>
+    </div>
+
+    <table class="timetable">
+      <thead><tr><th>Child</th><th>Activity</th><th>Time</th><th>Getting home</th><th>David</th><th>Natalia</th></tr></thead>
+      <tbody>
+        <tr><td>Jamie</td><td>—</td><td>—</td><td>Walks home from school</td><td class="who-david">—</td><td class="who-natalia">—</td></tr>
+        <tr><td>Izzy</td><td>Violin</td><td>5.30–6pm</td><td>Walks home from school, then taken to violin by David</td><td class="who-david">Home by 5pm to collect Sam and take Izzy to violin</td><td class="who-natalia">At home — let dogs out periodically</td></tr>
+        <tr><td>Sam</td><td>—</td><td>—</td><td>Collected by 6pm latest</td><td class="who-david">Collects Sam by 5pm, ahead of taking Izzy to violin</td><td class="who-natalia">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-name">Wed 23 Sept</span>
+      <span class="day-tag">Prep for Thursday swimming</span>
+    </div>
+    <div class="day-risk">Get Sam's swimming kit ready tonight for Thursday morning.</div>
+
+    <div class="subsection morning">
+      <h3>Morning checklist</h3>
+      <ul>
+        <li><input type="checkbox" id="c16"><label for="c16">Sam — packed lunch and water bottle</label></li>
+        <li><input type="checkbox" id="c17"><label for="c17">Jamie — check if French Horn needed for House Orchestra <span class="flag">TBC</span></label></li>
+        <li><input type="checkbox" id="c17b"><label for="c17b">Remind Izzy and Jamie about how they are expected to get home</label></li>
+      </ul>
+    </div>
+
+    <div class="subsection dogs">
+      <h3>Dog reminders</h3>
+      <ul>
+        <li><input type="checkbox" id="d15"><label for="d15">Feed am and pm, water bowl topped up</label></li>
+        <li><input type="checkbox" id="d16"><label for="d16">Dog walker booked for mid-morning</label></li>
+      </ul>
+    </div>
+
+    <table class="timetable">
+      <thead><tr><th>Child</th><th>Activity</th><th>Time</th><th>Getting home</th><th>David</th><th>Natalia</th></tr></thead>
+      <tbody>
+        <tr><td>Izzy</td><td>Lacrosse</td><td>After school–5pm</td><td>Walks home after lacrosse</td><td class="who-david">Home before 6pm to collect Sam</td><td class="who-natalia">At home — let dogs out periodically</td></tr>
+        <tr><td>Jamie</td><td>House Orchestra <span class="flag">TBC</span></td><td>—</td><td>Walks home unless orchestra is on</td><td class="who-david">—</td><td class="who-natalia">—</td></tr>
+        <tr><td>Sam</td><td>—</td><td>—</td><td>Collected before 6pm</td><td class="who-david">Home before 6pm to collect Sam. Swimming kit ready tonight.</td><td class="who-natalia">At home</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<script>
+document.querySelectorAll('.subsection input[type=checkbox]').forEach(function(box){
+  box.addEventListener('change', function(){
+    box.closest('li').classList.toggle('checked-text', box.checked);
+  });
+});
+</script>
+</body>
+</html>
